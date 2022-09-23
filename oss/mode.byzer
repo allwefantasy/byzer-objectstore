@@ -1,7 +1,15 @@
 !assert "ossID" in __set__  "ossID is required";
 !assert "ossKey" in __set__  "ossKey is required";
 
-!plugin app install - "byzer-objectstore-oss-3.3"  
+!plugin list;
+!lastCommand named plugins;
+set isOSSInstalled=`select count(*) from plugins where name="byzer-objectstore-oss-3.3"` 
+where mode="runtime" and type="sql";
+
+!if ''' :isOSSInstalled == 0  ''';
+!then;
+   !plugin app install - "byzer-objectstore-oss-3.3"  
+!fi;
 
 connect FS.``
 where `fs.oss.impl`="org.apache.hadoop.fs.aliyun.oss.AliyunOSSFileSystem" 

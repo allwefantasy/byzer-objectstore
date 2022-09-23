@@ -1,7 +1,15 @@
 !assert "consnID" in __set__  "consnID is required";
 !assert "consnKey" in __set__  "consnKey is required";
 
-!plugin app install - "byzer-objectstore-cos-3.3"  
+!plugin list;
+!lastCommand named plugins;
+set isCosInstalled=`select count(*) from plugins where name="byzer-objectstore-cos-3.3"` 
+where mode="runtime" and type="sql";
+
+!if ''' :isCosInstalled == 0  ''';
+!then;
+   !plugin app install - "byzer-objectstore-cos-3.3"  
+!fi;  
 
 connect FS.``
 where `fs.cosn.impl`="org.apache.hadoop.fs.CosFileSystem" 
