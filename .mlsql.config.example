@@ -1,0 +1,8 @@
+# java.home=/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/
+engine.memory=4046m
+# engine.url=http://127.0.0.1:9004
+
+# engine.streaming.plugin.clzznames=tech.mlsql.plugins.ds.MLSQLExcelApp,tech.mlsql.plugins.shell.app.MLSQLShell,tech.mlsql.plugins.assert.app.MLSQLAssert,tech.mlsql.plugins.mllib.app.MLSQLMllib
+user.owner=admin
+user.access_token=123
+user.outputSize=100

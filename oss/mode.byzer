@@ -1,0 +1,10 @@
+!assert "ossID" in __set__  "ossID is required";
+!assert "ossKey" in __set__  "ossKey is required";
+
+!plugin app install - "byzer-objectstore-oss-3.3"  
+
+connect FS.``
+where `fs.oss.impl`="org.apache.hadoop.fs.aliyun.oss.AliyunOSSFileSystem" 
+and   `fs.oss.accessKeyId`="${ossID}" 
+and   `fs.oss.accessKeySecret`="${ossKey}"
+as oss;
