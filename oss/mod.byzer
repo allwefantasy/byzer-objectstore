@@ -1,5 +1,6 @@
 !assert "ossID" in __set__  "ossID is required";
 !assert "ossKey" in __set__  "ossKey is required";
+!assert "ossEndpoint" in __set__ "ossEndpoint is required";
 
 !plugin list;
 !lastCommand named plugins;
@@ -15,4 +16,5 @@ connect FS
 where `fs.oss.impl`="org.apache.hadoop.fs.aliyun.oss.AliyunOSSFileSystem" 
 and   `fs.oss.accessKeyId`="${ossID}" 
 and   `fs.oss.accessKeySecret`="${ossKey}"
+and   `fs.oss.endpoint`="${ossEndpoint}"
 as oss;
