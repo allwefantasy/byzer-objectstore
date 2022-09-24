@@ -3,7 +3,7 @@
 
 !plugin list;
 !lastCommand named plugins;
-set isCosInstalled=`select count(*) from plugins where name="byzer-objectstore-cos-3.3"` 
+set isCosInstalled=`select count(*) from plugins where pluginName="byzer-objectstore-cos-3.3"` 
 where mode="runtime" and type="sql";
 
 !if ''' :isCosInstalled == 0  ''';

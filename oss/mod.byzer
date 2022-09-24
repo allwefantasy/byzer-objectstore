@@ -4,7 +4,7 @@
 
 !plugin list;
 !lastCommand named plugins;
-set isOSSInstalled=`select count(*) from plugins where name="byzer-objectstore-oss-3.3"` 
+set isOSSInstalled=`select count(*) from plugins where pluginName="byzer-objectstore-oss-3.3"` 
 where mode="runtime" and type="sql";
 
 !if ''' :isOSSInstalled == 0  ''';
