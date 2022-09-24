@@ -11,7 +11,7 @@ where mode="runtime" and type="sql";
    !plugin app install - "byzer-objectstore-cos-3.3";  
 !fi;  
 
-connect FS.``
+connect FS
 where `fs.cosn.impl`="org.apache.hadoop.fs.CosFileSystem" 
 and   `fs.AbstractFileSystem.cosn.impl`="org.apache.hadoop.fs.CosN"
 and   `fs.cosn.userinfo.secretId`="${consnID}" 

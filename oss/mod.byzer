@@ -11,7 +11,7 @@ where mode="runtime" and type="sql";
    !plugin app install - "byzer-objectstore-oss-3.3";  
 !fi;
 
-connect FS.``
+connect FS
 where `fs.oss.impl`="org.apache.hadoop.fs.aliyun.oss.AliyunOSSFileSystem" 
 and   `fs.oss.accessKeyId`="${ossID}" 
 and   `fs.oss.accessKeySecret`="${ossKey}"
