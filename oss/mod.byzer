@@ -18,3 +18,10 @@ and   `fs.oss.accessKeyId`="${ossID}"
 and   `fs.oss.accessKeySecret`="${ossKey}"
 and   `fs.oss.endpoint`="${ossEndpoint}"
 as oss;
+
+load FS.``
+where `fs.oss.impl`="org.apache.hadoop.fs.aliyun.oss.AliyunOSSFileSystem" 
+and   `fs.oss.accessKeyId`="${ossID}" 
+and   `fs.oss.accessKeySecret`="${ossKey}"
+and   `fs.oss.endpoint`="${ossEndpoint}"
+as output;

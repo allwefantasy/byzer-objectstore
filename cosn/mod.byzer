@@ -17,3 +17,10 @@ and   `fs.AbstractFileSystem.cosn.impl`="org.apache.hadoop.fs.CosN"
 and   `fs.cosn.userinfo.secretId`="${consnID}" 
 and   `fs.cosn.userinfo.secretKey`="${consnKey}"
 as cosn;
+
+load FS.``
+where `fs.cosn.impl`="org.apache.hadoop.fs.CosFileSystem" 
+and   `fs.AbstractFileSystem.cosn.impl`="org.apache.hadoop.fs.CosN"
+and   `fs.cosn.userinfo.secretId`="${consnID}" 
+and   `fs.cosn.userinfo.secretKey`="${consnKey}"
+as output;
