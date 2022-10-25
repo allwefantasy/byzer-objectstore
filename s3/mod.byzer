@@ -1,0 +1,43 @@
+!assert "s3aID" in __set__  "s3aID is required";
+!assert "s3aKey" in __set__  "s3aKey is required";
+
+set s3aEndpoint="" where type="defaultParam";
+
+!plugin list;
+!lastCommand named plugins;
+set isS3Installed=`select count(*) from plugins where pluginName="byzer-objectstore-s3-3.3"` 
+where mode="runtime" and type="sql";
+
+!if ''' :isS3Installed == 0  ''';
+!then;
+   !plugin app install - "byzer-objectstore-s3-3.3";  
+!fi;
+
+!if ''' :s3aEndpoint != "" ''';
+!then;
+   connect FS
+   where `fs.s3a.impl`="org.apache.hadoop.fs.s3a.S3AFileSystem" 
+   and   `fs.s3a.accessKeyId`="${s3aID}" 
+   and   `fs.s3a.accessKeySecret`="${s3aKey}"
+   and   `fs.s3a.endpoint`="${s3aEndpoint}"
+   as s3a;
+
+   load FS.``
+   where `fs.s3a.impl`="org.apache.hadoop.fs.aliyun.oss.AliyunOSSFileSystem" 
+   and   `fs.s3a.accessKeyId`="${s3aID}" 
+   and   `fs.s3a.accessKeySecret`="${s3aKey}"
+   and   `fs.s3a.endpoint`="${s3aEndpoint}"
+   as output;
+!else;
+   connect FS
+   where `fs.s3a.impl`="org.apache.hadoop.fs.s3a.S3AFileSystem" 
+   and   `fs.s3a.accessKeyId`="${s3aID}" 
+   and   `fs.s3a.accessKeySecret`="${s3aKey}"   
+   as s3a;
+
+   load FS.``
+   where `fs.s3a.impl`="org.apache.hadoop.fs.aliyun.oss.AliyunOSSFileSystem" 
+   and   `fs.s3a.accessKeyId`="${s3aID}" 
+   and   `fs.s3a.accessKeySecret`="${s3aKey}"
+   as output;
+!fi;
