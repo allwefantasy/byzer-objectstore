@@ -23,7 +23,7 @@ where mode="runtime" and type="sql";
    as s3a;
 
    load FS.``
-   where `fs.s3a.impl`="org.apache.hadoop.fs.aliyun.oss.AliyunOSSFileSystem" 
+   where `fs.s3a.impl`="org.apache.hadoop.fs.s3a.S3AFileSystem"
    and   `fs.s3a.accessKeyId`="${s3aID}" 
    and   `fs.s3a.accessKeySecret`="${s3aKey}"
    and   `fs.s3a.endpoint`="${s3aEndpoint}"
@@ -36,7 +36,7 @@ where mode="runtime" and type="sql";
    as s3a;
 
    load FS.``
-   where `fs.s3a.impl`="org.apache.hadoop.fs.aliyun.oss.AliyunOSSFileSystem" 
+   where `fs.s3a.impl`="org.apache.hadoop.fs.s3a.S3AFileSystem"
    and   `fs.s3a.accessKeyId`="${s3aID}" 
    and   `fs.s3a.accessKeySecret`="${s3aKey}"
    as output;
